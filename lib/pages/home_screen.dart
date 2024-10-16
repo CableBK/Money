@@ -5,6 +5,15 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  List catName = [
+'Cat1',
+'Cat1',
+'Cat1',
+'Cat1',
+'Cat1',
+'Cat1',
+  ];
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -13,48 +22,47 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Cable'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add_alert),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text('แจ้งเตือน')));
-            },
+      body: ListView(
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 10),
+            decoration: BoxDecoration(
+              color: Colors.red.shade900,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(
+                      Icons.notifications,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    Icon(
+                      Icons.account_box,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
+          Padding(
+            padding: EdgeInsets.only(top: 20, left: 15, right: 15),
+            child: Column(
+              children: [GridView.builder(
+                shrinkWrap true,
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,childAspectRatio: 1.1),)],
+            ),
+          )
         ],
-      ),
-      body: Center(
-        child: Row(
-          children: [
-            Column(
-              children: [
-                IconButton(onPressed: null, icon: Icon(Icons.add)),
-                IconButton(onPressed: null, icon: Icon(Icons.add)),
-              ],
-            ),
-            Column(
-              children: [
-                IconButton(onPressed: null, icon: Icon(Icons.add)),
-                IconButton(onPressed: null, icon: Icon(Icons.add)),
-              ],
-            ),
-            Column(
-              children: [
-                IconButton(onPressed: null, icon: Icon(Icons.add)),
-                IconButton(onPressed: null, icon: Icon(Icons.add)),
-              ],
-            ),
-            Column(
-              children: [
-                IconButton(onPressed: null, icon: Icon(Icons.add)),
-                IconButton(onPressed: null, icon: Icon(Icons.add)),
-              ],
-            ),
-          ],
-        ),
       ),
     );
   }
