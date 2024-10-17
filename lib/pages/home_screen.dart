@@ -2,23 +2,36 @@
 
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  List catName = [
-'Cat1',
-'Cat1',
-'Cat1',
-'Cat1',
-'Cat1',
-'Cat1',
+  static List catNames = [
+    'Cat1',
+    'Cat1',
+    'Cat1',
+    'Cat1',
+    'Cat1',
+    'Cat1',
   ];
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  static List<Color> catColors = [
+    Color.fromARGB(255, 44, 40, 40),
+    Color.fromARGB(255, 44, 40, 40),
+    Color.fromARGB(255, 44, 40, 40),
+    Color.fromARGB(255, 44, 40, 40),
+    Color.fromARGB(255, 44, 40, 40),
+    Color.fromARGB(255, 44, 40, 40),
+  ];
 
-class _HomeScreenState extends State<HomeScreen> {
+  static List<Icon> catIcons = [
+    Icon(Icons.category, color: Colors.white, size: 30),
+    Icon(Icons.category, color: Colors.white, size: 30),
+    Icon(Icons.category, color: Colors.white, size: 30),
+    Icon(Icons.category, color: Colors.white, size: 30),
+    Icon(Icons.category, color: Colors.white, size: 30),
+    Icon(Icons.category, color: Colors.white, size: 30),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,10 +69,31 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: EdgeInsets.only(top: 20, left: 15, right: 15),
             child: Column(
-              children: [GridView.builder(
-                shrinkWrap true,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,childAspectRatio: 1.1),)],
+              children: [
+                GridView.builder(
+                    itemCount: catNames.length,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3, childAspectRatio: 1.1),
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              color: catColors[index],
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: catIcons[index],
+                            ),
+                          ),
+                        ],
+                      );
+                    })
+              ],
             ),
           )
         ],
