@@ -24,9 +24,9 @@ class HomeScreen extends StatelessWidget {
   ];
 
   static List<Icon> catIcons = [
-    Icon(Icons.category, color: Colors.white, size: 30),
-    Icon(Icons.category, color: Colors.white, size: 30),
-    Icon(Icons.category, color: Colors.white, size: 30),
+    Icon(Icons.fiber_manual_record_rounded, color: Colors.white, size: 30),
+    Icon(Icons.money, color: Colors.white, size: 30),
+    Icon(Icons.lightbulb, color: Colors.white, size: 30),
     Icon(Icons.category, color: Colors.white, size: 30),
     Icon(Icons.category, color: Colors.white, size: 30),
     Icon(Icons.category, color: Colors.white, size: 30),
@@ -61,6 +61,20 @@ class HomeScreen extends StatelessWidget {
                       size: 30,
                       color: Colors.white,
                     ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'เคเบิล',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    SizedBox(height: 250),
                   ],
                 )
               ],
