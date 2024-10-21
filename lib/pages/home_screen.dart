@@ -2,10 +2,15 @@
 
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
-  static List catNames = [
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List catNames = [
     'Cat1',
     'Cat1',
     'Cat1',
@@ -14,7 +19,7 @@ class HomeScreen extends StatelessWidget {
     'Cat1',
   ];
 
-  static List<Color> catColors = [
+  List<Color> catColors = [
     Color.fromARGB(255, 44, 40, 40),
     Color.fromARGB(255, 44, 40, 40),
     Color.fromARGB(255, 44, 40, 40),
@@ -23,7 +28,7 @@ class HomeScreen extends StatelessWidget {
     Color.fromARGB(255, 44, 40, 40),
   ];
 
-  static List<Icon> catIcons = [
+  List<Icon> catIcons = [
     Icon(Icons.fiber_manual_record_rounded, color: Colors.white, size: 30),
     Icon(Icons.money, color: Colors.white, size: 30),
     Icon(Icons.lightbulb, color: Colors.white, size: 30),
@@ -31,7 +36,6 @@ class HomeScreen extends StatelessWidget {
     Icon(Icons.category, color: Colors.white, size: 30),
     Icon(Icons.category, color: Colors.white, size: 30),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,28 +89,29 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 GridView.builder(
-                    itemCount: catNames.length,
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3, childAspectRatio: 1.1),
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          Container(
-                            height: 60,
-                            width: 60,
-                            decoration: BoxDecoration(
-                              color: catColors[index],
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: catIcons[index],
-                            ),
+                  itemCount: catNames.length,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, childAspectRatio: 1.1),
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            color: catColors[index],
+                            shape: BoxShape.circle,
                           ),
-                        ],
-                      );
-                    })
+                          child: Center(
+                            child: catIcons[index],
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                )
               ],
             ),
           )
